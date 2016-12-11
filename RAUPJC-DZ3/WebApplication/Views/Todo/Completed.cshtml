@@ -1,0 +1,17 @@
+﻿@model IEnumerable<TodoSqlRepository.TodoItem>
+
+@{
+    ViewData["Title"] = "Completed todos";
+}
+
+<h2>Completed Todos</h2>
+<hr />
+@foreach (var item in Model)
+{
+    <p><b>@item.Text</b></p>
+    <p>@item.DateCompleted</p>
+    <br />
+}
+<a asp-action="Index">Back to List</a>
+
+

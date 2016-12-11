@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TodoSqlRepository.TodoItem>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if ((string)ViewData["logged"] == "F")
+{
+    <h2>Welcome to Todo List App!</h2>
+    <p>Please log in or register to use the app!</p>
+}
+else
+{
+    <h2>Active Todo</h2>
+    <p>
+        <a asp-action="Add">Add new todo</a>
+        |
+        <a asp-action="Completed">See completed todos</a>
+    </p>
+    @foreach(var item in Model)
+    {
+            <p><b>@item.Text</b></p>
+            <p>@item.DateCreated</p>
+            <a asp-controller="Todo" asp-action="MarkCompleted" asp-route-guid="@item.Id">Mark as completed</a>
+            <hr />
+    }
+}
+
+
